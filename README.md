@@ -1,2 +1,2 @@
-# GG2PluginDLData
-I use this repository to hold files that are to be downloaded by GG2 plugins.
+# Bass' github shithub
+This repository contains some of my shit. No plugins yet, though. Just data used by them. That may change in the future.
