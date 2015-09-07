@@ -1,0 +1,50 @@
+// Handle input.
+var movepressed, movereleased, buttonpressed, buttonreleased;
+movepressed = 0;
+movereleased = 0;
+buttonpressed = 0;
+buttonreleased = 0;
+
+movepressed |= move & ~lastmove;
+movereleased |= ~move & lastmove;
+
+buttonpressed |= button & ~lastbutton;
+buttonreleased |= ~button & lastbutton;
+
+////////Reference////////
+//// Move   //// Button
+// $01 U    // $01 BUTTON1
+// $02 D    // $02 BUTTON2
+// $04 L    // $04 BUTTON3
+// $08 R    // $08 BUTTON4
+////////////////////////
+if !instance_exists(gr) || gr == -1 {
+    if (move & $04) {
+        hspeed -= 1;
+    }
+    if (move & $08) {
+        hspeed += 1;
+    }
+    hspeed *= 0.8;
+    
+    if (buttonpressed & $01) {
+        event_user(1);
+    }
+} else {
+    fact = 0;
+    if (move & $04) {
+        fact = 0.05;
+    }
+    if (move & $08) {
+        fact = -0.05;
+    }
+    if (buttonpressed & $01) {
+        with gr instance_destroy();
+        gr = -1;
+    }
+}
+
+buttonpressed = 0;
+movepressed = 0;
+lastmove = move;
+lastbutton = button;
