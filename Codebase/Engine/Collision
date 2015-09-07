@@ -1,0 +1,19 @@
+if (place_meeting(x+_hspeed,y,Collision)) {
+
+    if (_hspeed != 0)
+        while (!place_meeting(x+sign(_hspeed),y,Collision)) x+=sign(_hspeed);
+    
+    _hspeed=0;
+}
+
+x+=_hspeed;
+
+if (place_meeting(x,y+_vspeed,Collision)) {
+
+    if (_vspeed != 0)
+        while (!place_meeting(x,y+sign(_vspeed),Collision))y+=sign(_vspeed);
+    
+    _vspeed=0;
+}
+
+y+=_vspeed;
