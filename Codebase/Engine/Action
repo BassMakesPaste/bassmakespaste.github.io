@@ -18,7 +18,6 @@ buttonreleased |= ~button & lastbutton;
 // $04 L    // $04 BUTTON3
 // $08 R    // $08 BUTTON4
 ////////////////////////
-if !instance_exists(gr) || gr == -1 {
     if (move & $04) {
         hspeed -= 1;
     }
@@ -30,19 +29,6 @@ if !instance_exists(gr) || gr == -1 {
     if (buttonpressed & $01) {
         event_user(1);
     }
-} else {
-    fact = 0;
-    if (move & $04) {
-        fact = 0.05;
-    }
-    if (move & $08) {
-        fact = -0.05;
-    }
-    if (buttonpressed & $01) {
-        with gr instance_destroy();
-        gr = -1;
-    }
-}
 
 buttonpressed = 0;
 movepressed = 0;
