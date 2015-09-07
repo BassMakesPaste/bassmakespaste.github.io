@@ -1,0 +1,19 @@
+var m, b, dir;
+m = 0;
+b = 0;
+if keyboard_check_direct(ord("W")) m += $01;
+if keyboard_check_direct(ord("S")) m += $02;
+if keyboard_check_direct(ord("A")) m += $04;
+if keyboard_check_direct(ord("D")) m += $08;
+
+if mouse_check_button(mb_left) b += $01;
+if mouse_check_button(mb_right) b += $02;
+if keyboard_check_direct(ord("C")) b += $04;
+
+dir = point_direction(Player.x,Player.y,mouse_x,mouse_y);
+
+with(Player) {
+    button = b;
+    move = m;
+    aimDirection = dir;
+}
