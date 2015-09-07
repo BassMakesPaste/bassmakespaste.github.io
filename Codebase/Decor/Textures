@@ -1,0 +1,24 @@
+// Draws a texture over a black mask.
+
+// Apparently, surfaces suck. So we have to redefine them if they go away.
+draw_background_tiled_ext(DirtB,0,0,1,1,c_white,1);
+if !surface_exists(sf_mask) {
+    sf_mask = surface_create(sprite_width,sprite_height);
+}
+if !surface_exists(sf_tiles) {
+    sf_tiles = surface_create(sprite_width,sprite_height);
+}
+// Draw the mask surface, adding in the sprite..
+surface_set_target(sf_mask);
+    draw_clear_alpha(0, 0);
+    draw_sprite_ext(sprite_index,0,0,0,1,1,0,c_white,1);
+surface_reset_target();
+
+// Draw the tiled background, blending.
+surface_set_target(sf_tiles);
+    draw_background_tiled_ext(bg,0,0,1,1,c_white,1);
+    draw_set_blend_mode_ext(bm_dest_alpha, bm_src_alpha);
+        draw_surface(sf_mask,0,0);
+    draw_set_blend_mode(bm_normal);
+surface_reset_target();
+draw_surface(sf_tiles,x,y);
