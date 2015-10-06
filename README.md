@@ -1,2 +1,2 @@
-# Bass' github shithub
-This repository contains some of my shit. No plugins yet, though. Just data used by them. That may change in the future.
+# Cale Seymour
+This repository contains my website and is used to host supplimentary code I have produced.
