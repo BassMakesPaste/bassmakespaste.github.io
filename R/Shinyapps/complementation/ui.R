@@ -4,24 +4,19 @@ library(shiny)
 shinyUI(fluidPage(
   
   # Application title
-  titlePanel("Mutation Rate Calculator"),
+  titlePanel("Complementation Table Analyzer"),
   
   # Sidebar
   sidebarLayout(
     sidebarPanel(
-       numericInput("N",
-                   "Average Cells Per Culture",
-                   min = 0,
-                   max = 1E128,
-                   value = 1),
-       fileInput(inputId = "mutants",
-                    label = "Upload Mutants")
+      checkboxInput("checkMap", label = "Use Mapping", value = TRUE),
+      fileInput(inputId = "complementation", label = "Upload Complementation"),
+      fileInput(inputId = "mapping", label = "Upload Mapping")           
     ),
     
     # Draw plot
     mainPanel(
-       #tableOutput("out")
-       textOutput("debug")
+      plotOutput("out")
     )
   )
 ))
